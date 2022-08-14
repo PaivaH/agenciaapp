@@ -28,6 +28,7 @@ public class Responsavel implements IPrinter{
     public String toString() {
         return "Responsavel [cargo=" + cargo + ", email=" + email + ", nome=" + nome + "]";
     }
+    
     @Override
     public void impressao() {
         System.out.println(this);

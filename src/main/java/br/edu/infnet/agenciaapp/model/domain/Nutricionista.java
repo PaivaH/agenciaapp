@@ -30,5 +30,10 @@ public class Nutricionista extends Profissional{
     public String getConselhoRegional() {
         return this.regiaoCrn + "/" + this.numeroCrn;
     }
+
+    @Override
+    public String toString() {
+        return "Nutricionista [esportivo=" + esportivo + ", numeroCrn=" + numeroCrn + ", regiaoCrn=" + regiaoCrn + "]";
+    }
     
 }

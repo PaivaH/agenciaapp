@@ -30,5 +30,11 @@ public class Fisioterapeuta extends Profissional{
     public String getConselhoRegional() {
         return this.regiaoCrefito + "/" + this.numeroCrefito;
     }
+
+    @Override
+    public String toString() {
+        return "Fisioterapeuta [atendeEmCasa=" + atendeEmCasa + ", numeroCrefito=" + numeroCrefito + ", regiaoCrefito="
+                + regiaoCrefito + "]";
+    }
         
 }

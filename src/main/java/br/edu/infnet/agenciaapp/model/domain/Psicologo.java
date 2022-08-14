@@ -40,5 +40,11 @@ public class Psicologo extends Profissional{
     public String getConselhoRegional() {
         return this.regiaoCrp + "/" + this.numeroCrp;
     }
+
+    @Override
+    public String toString() {
+        return "Psicologo [atendeRemoto=" + atendeRemoto + ", numeroCrp=" + numeroCrp + ", regiaoCrp=" + regiaoCrp
+                + ", tempoSessao=" + tempoSessao + "]";
+    }
     
 }

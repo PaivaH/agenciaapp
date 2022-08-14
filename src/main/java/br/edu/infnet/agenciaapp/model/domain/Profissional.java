@@ -30,6 +30,10 @@ public abstract class Profissional implements IPrinter{
     public void setEspecialidadaes(String especialidadaes) {
         this.especialidadaes = especialidadaes;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Profissional [especialidadaes=" + especialidadaes + ", matricula=" + matricula + ", nome=" + nome + "]";
+    }
     
 }
