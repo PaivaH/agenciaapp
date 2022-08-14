@@ -1,6 +1,6 @@
-package br.edu.infnet.bodybuilderapp.model.domain;
+package br.edu.infnet.agenciaapp.model.domain;
 
-public class Responsavel {
+public class Responsavel implements IPrinter{
     private String nome;
     private String cargo;
     private String email;
@@ -27,6 +27,10 @@ public class Responsavel {
     @Override
     public String toString() {
         return "Responsavel [cargo=" + cargo + ", email=" + email + ", nome=" + nome + "]";
+    }
+    @Override
+    public void impressao() {
+        System.out.println(this);
     }
     
 }
