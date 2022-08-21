@@ -33,7 +33,7 @@ public class Nutricionista extends Profissional{
 
     @Override
     public String toString() {
-        return "Nutricionista [esportivo=" + esportivo + ", numeroCrn=" + numeroCrn + ", regiaoCrn=" + regiaoCrn + "]";
+        return super.toString() + "Nutricionista [esportivo=" + esportivo + ", numeroCrn=" + numeroCrn + ", regiaoCrn=" + regiaoCrn + "]";
     }
-    
+
 }

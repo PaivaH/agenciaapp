@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
@@ -10,39 +11,9 @@
 
 <body>
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <div class="conteiner">
-        <nav class="navbar navbar-expand-sm bg-warning">
-
-            <div class="container-fluid">
-                <!-- Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/agencia">Agencia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profissional">Profissionais</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/psicologo">Psicologo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/nutricionista">Nutricionista</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/fisioterapeuta">Fisioterapeuta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/responsavel">Responsavel</a>
-                    </li>
-                </ul>
-            </div>
-
-        </nav>
-
-        <div class="container mt-1 bg-light">
+    <div class="conteiner mt-1 bg-light">
+        <%@ include file="./components/nav.jsp" %>
+        <div class="container">
             <h2>Agencia app</h2>
             <p>Projeto para cadastrar profissionais de saude em agencia</p>
 
@@ -80,7 +51,7 @@
                     <tr>
                         <th>Atributo</th>
                         <th>Tipo</th>
-                        <th>Descrição</th>
+                        <th>Descricao</th>
                     </tr>
                 </thead>
                 <tbody>

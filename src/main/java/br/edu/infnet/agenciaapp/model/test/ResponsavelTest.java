@@ -6,6 +6,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
+import br.edu.infnet.agenciaapp.controller.ResponsavelController;
 import br.edu.infnet.agenciaapp.model.domain.Responsavel;
 
 @Component
@@ -19,19 +20,22 @@ public class ResponsavelTest implements ApplicationRunner{
         r1.setEmail("dev@gmail.com");
         r1.setNome("Thiago");
         AppPrinter.imprimir("#Responsavel 1", r1);
+        ResponsavelController.addResponsavel(r1);
 
         Responsavel r2 = new Responsavel();
-        r2.setCargo("Desenvolvedor");
-        r2.setEmail("dev@gmail.com");
-        r2.setNome("Thiago");
+        r2.setCargo("Gerente");
+        r2.setEmail("gerente@gmail.com");
+        r2.setNome("Pedro");
         AppPrinter.imprimir("#Responsavel 2", r2);
+        ResponsavelController.addResponsavel(r2);
 
 
         Responsavel r3 = new Responsavel();
-        r3.setCargo("Desenvolvedor");
-        r3.setEmail("dev@gmail.com");
-        r3.setNome("Thiago");
+        r3.setCargo("Proprietario");
+        r3.setEmail("andrew@agencia.com");
+        r3.setNome("Andre");
         AppPrinter.imprimir("##Responsavel 3", r3);
+        ResponsavelController.addResponsavel(r3);
 
     }
     

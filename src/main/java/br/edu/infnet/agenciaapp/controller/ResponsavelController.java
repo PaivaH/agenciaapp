@@ -9,40 +9,40 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.edu.infnet.agenciaapp.model.domain.Profissional;
+import br.edu.infnet.agenciaapp.model.domain.Responsavel;
 
 @Controller
-public class ProfissionalController {
-    public static Map<Integer, Profissional> profissionais= new HashMap<Integer, Profissional>();
-    public static int id = 1;
+public class ResponsavelController {
+    public static Map<Integer, Responsavel> responsaveis = new HashMap<Integer, Responsavel>();
+    public static Integer id = 1;
 
-    public static void addProfissional (Profissional profissional) {
-        profissional.setId(id++);
-        profissionais.put(id, profissional);
+    public static void addResponsavel(Responsavel responsavel){
+        responsavel.setId(id++);
+        responsaveis.put(id, responsavel);
     }
 
-    public static Collection<Profissional> obterProfissionals() {
-        return profissionais.values();
+    public static Collection<Responsavel> obterProfissionals() {
+        return responsaveis.values();
     }
 
     public static void excluir(Integer id) {
-        profissionais.remove(id);
+        responsaveis.remove(id);
         System.out.println(id + " Excluido com sucesso");
     }
 
-    @GetMapping(value = "/profissional/lista")
+    @GetMapping(value = "/responsavel/lista")
     public String telaHome(Model model) {
         model.addAttribute("listagem", obterProfissionals());
-        
-        return "/profissional/lista";
+
+        return "/responsavel/lista";
     }
 
-    @GetMapping(value = "/profissional/{id}/excluir")
+    @GetMapping(value = "/responsavel/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
 
         System.out.println(id + " Excluido com sucesso");
 
-        return "redirect:/profissional/lista";
+        return "redirect:/responsavel/lista";
     }
 }
