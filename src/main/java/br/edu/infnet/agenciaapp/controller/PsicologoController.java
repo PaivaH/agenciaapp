@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Psicologo;
 @Controller
 public class PsicologoController {
     public static Map<Integer, Psicologo> psicologos= new HashMap<Integer, Psicologo>();
-    public static int id = 1;
+    public static Integer id = 0;
 
     public static void addPsicologo (Psicologo psicologo) {
-        psicologo.setId(id++);
+        psicologo.setId(++id);
         psicologos.put(id, psicologo);
     }
 
@@ -40,8 +40,6 @@ public class PsicologoController {
     @GetMapping(value = "/psicologo/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
-
-        System.out.println(id + " Excluido com sucesso");
 
         return "redirect:/psicologo/lista";
     }

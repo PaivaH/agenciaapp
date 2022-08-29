@@ -2,41 +2,74 @@ package br.edu.infnet.agenciaapp.model.test;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
 import br.edu.infnet.agenciaapp.controller.ResponsavelController;
 import br.edu.infnet.agenciaapp.model.domain.Responsavel;
+import br.edu.infnet.agenciaapp.model.exception.responsavel.nameEmptyException;
+import br.edu.infnet.agenciaapp.model.exception.responsavel.nameNullException;
 
 @Component
-@Order(1)
-public class ResponsavelTest implements ApplicationRunner{
+public class ResponsavelTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Responsavel r1 = new Responsavel();
-        r1.setCargo("Desenvolvedor");
-        r1.setEmail("dev@gmail.com");
-        r1.setNome("Thiago");
-        AppPrinter.imprimir("#Responsavel 1", r1);
-        ResponsavelController.addResponsavel(r1);
+        try {
+            Responsavel r1 = new Responsavel("Thiago", "Desenvolvedor",
+                    "dev@gmail.com", null);
+            AppPrinter.imprimir("#Responsavel 1", r1);
+            ResponsavelController.addResponsavel(r1);
+        } catch (nameNullException exception) {
+            System.err.println(exception);
+        } catch (nameEmptyException excetion) {
+            System.err.println(excetion);
+        }
 
-        Responsavel r2 = new Responsavel();
-        r2.setCargo("Gerente");
-        r2.setEmail("gerente@gmail.com");
-        r2.setNome("Pedro");
-        AppPrinter.imprimir("#Responsavel 2", r2);
-        ResponsavelController.addResponsavel(r2);
+        try {
+            Responsavel r2 = new Responsavel("Pedro", "Gerente",
+                    "gerente@gmail.com", null);
+            AppPrinter.imprimir("#Responsavel 2", r2);
+            ResponsavelController.addResponsavel(r2);
+        } catch (nameNullException exception) {
+            System.err.println(exception);
+        } catch (nameEmptyException excetion) {
+            System.err.println(excetion);
+        }
 
+        try {
+            Responsavel r3 = new Responsavel("Andre", "Proprietario",
+                    "andrew@agencia.com", null);
+            AppPrinter.imprimir("##Responsavel 3", r3);
+            ResponsavelController.addResponsavel(r3);
+        } catch (nameNullException exception) {
+            System.err.println(exception);
+        } catch (nameEmptyException excetion) {
+            System.err.println(excetion);
+        }
 
-        Responsavel r3 = new Responsavel();
-        r3.setCargo("Proprietario");
-        r3.setEmail("andrew@agencia.com");
-        r3.setNome("Andre");
-        AppPrinter.imprimir("##Responsavel 3", r3);
-        ResponsavelController.addResponsavel(r3);
+        try {
+            Responsavel r4 = new Responsavel(null, "Proprietario",
+                    "andrew@agencia.com", null);
+            AppPrinter.imprimir("##Responsavel 3", r4);
+            ResponsavelController.addResponsavel(r4);
+        } catch (nameNullException exception) {
+            System.err.println(exception);
+        } catch (nameEmptyException excetion) {
+            System.err.println(excetion);
+        }
+
+        try {
+            Responsavel r5 = new Responsavel("", "Proprietario",
+                    "andrew@agencia.com", null);
+            AppPrinter.imprimir("##Responsavel 3", r5);
+            ResponsavelController.addResponsavel(r5);
+        } catch (nameNullException exception) {
+            System.err.println(exception);
+        } catch (nameEmptyException excetion) {
+            System.err.println(excetion);
+        }
 
     }
-    
+
 }

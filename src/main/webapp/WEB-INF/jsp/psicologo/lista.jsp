@@ -12,7 +12,7 @@
 
 <body>
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <div class="conteiner mt-1 bg-light">
+    <div class="conteiner  bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
             <h2>Agencia app</h2>

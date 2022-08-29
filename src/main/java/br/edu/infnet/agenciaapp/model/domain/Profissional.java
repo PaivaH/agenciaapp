@@ -2,11 +2,20 @@ package br.edu.infnet.agenciaapp.model.domain;
 
 import br.edu.infnet.agenciaapp.model.interfaces.IPrinter;
 
-public abstract class Profissional implements IPrinter{
-    private int id;
+public abstract class Profissional implements IPrinter {
+    private Integer id;
     protected String nome;
     protected int matricula;
     protected String especialidades;
+    protected Agencia agencia;
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
 
     public abstract String getConselhoRegional();
 
@@ -34,9 +43,11 @@ public abstract class Profissional implements IPrinter{
         this.especialidades = especialidades;
     }
 
+
+
     @Override
     public String toString() {
-        return "Profissional [especialidadaes=" + especialidades + ", matricula=" + matricula + ", nome=" + nome + "]";
+        return nome  + ";" + matricula  + ";" + especialidades + ";" + getConselhoRegional();
     }
 
     public int getId() {
@@ -46,5 +57,5 @@ public abstract class Profissional implements IPrinter{
     public void setId(int id) {
         this.id = id;
     }
-    
+
 }

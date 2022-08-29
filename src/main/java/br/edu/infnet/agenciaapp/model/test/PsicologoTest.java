@@ -2,7 +2,6 @@ package br.edu.infnet.agenciaapp.model.test;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
@@ -10,7 +9,6 @@ import br.edu.infnet.agenciaapp.controller.PsicologoController;
 import br.edu.infnet.agenciaapp.model.domain.Psicologo;
 
 @Component
-@Order
 public class PsicologoTest implements ApplicationRunner{
 
     @Override

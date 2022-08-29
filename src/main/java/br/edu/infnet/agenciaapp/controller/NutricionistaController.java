@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Nutricionista;
 @Controller
 public class NutricionistaController {
     public static Map<Integer, Nutricionista> nutricionistas= new HashMap<Integer, Nutricionista>();
-    public static int id = 1;
+    public static int id = 0;
 
     public static void addNutricionista (Nutricionista nutricionista) {
-        nutricionista.setId(id++);
+        nutricionista.setId(++id);
         nutricionistas.put(id, nutricionista);
     }
 
@@ -40,8 +40,6 @@ public class NutricionistaController {
     @GetMapping(value = "/nutricionista/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
-
-        System.out.println(id + " Excluido com sucesso");
 
         return "redirect:/nutricionista/lista";
     }

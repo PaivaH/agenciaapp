@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
 @Controller
 public class FisioterapeutaController {
     public static Map<Integer, Fisioterapeuta> fisioterapeutas = new HashMap<Integer, Fisioterapeuta>();
-    public static int id = 1;
+    public static int id = 0;
 
     public static void addFisioterapeuta(Fisioterapeuta fisioterapeuta) {
-        fisioterapeuta.setId(id++);
+        fisioterapeuta.setId(++id);
         fisioterapeutas.put(id, fisioterapeuta);
     }
 
@@ -40,8 +40,6 @@ public class FisioterapeutaController {
     @GetMapping(value = "/fisioterapeuta/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
-        
-        System.out.println(id + " Excluido com sucesso");
 
         return "redirect:/fisioterapeuta/lista";
     }

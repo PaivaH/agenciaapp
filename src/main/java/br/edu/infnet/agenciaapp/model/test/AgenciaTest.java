@@ -8,33 +8,70 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.agenciaapp.AppPrinter;
 import br.edu.infnet.agenciaapp.controller.AgenciaController;
 import br.edu.infnet.agenciaapp.model.domain.Agencia;
+import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjEmptyException;
+import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjNullException;
 
 @Component
-@Order(2)
-public class AgenciaTest implements ApplicationRunner{
+@Order(1)
+public class AgenciaTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Agencia ag1 = new Agencia();
-        ag1.setNome("Agencia 1");
-        ag1.setCnpj("12346789");
-        ag1.setEndereco("Rua A, 235, Centro");
-        AppPrinter.imprimir("#Agencia 1", ag1);
-        AgenciaController.addAgencia(ag1);
+        try {
+            Agencia ag1 = new Agencia("Agencia 1", "12346789", "Rua A, 235, Centro",
+                    null, null);
+            AppPrinter.imprimir("#Agencia 1", ag1);
+            AgenciaController.addAgencia(ag1);
 
-        Agencia ag2 = new Agencia();
-        ag2.setNome("Agencia 2");
-        ag2.setCnpj("2312245");
-        ag2.setEndereco("Rua B, 3123, Centro");
-        AppPrinter.imprimir("#Agencia 2", ag2);
-        AgenciaController.addAgencia(ag2);
+        } catch (cnpjNullException exception) {
+            System.err.println(exception);
+        } catch (cnpjEmptyException emptyException) {
+            System.err.println(emptyException);
+        }
 
-        Agencia ag3 = new Agencia();
-        ag3.setNome("Agencia 3");
-        ag3.setCnpj("5122453");
-        ag3.setEndereco("Rua D, 3423, Centro");
-        AppPrinter.imprimir("#Agencia 3", ag3);
-        AgenciaController.addAgencia(ag3);
+        try {
+            Agencia ag2 = new Agencia("Agencia 2", "2312245", "Rua B, 3123, Centro",
+                    null, null);
+            AppPrinter.imprimir("#Agencia 2", ag2);
+            AgenciaController.addAgencia(ag2);
+        } catch (cnpjNullException exception) {
+            System.err.println(exception);
+        } catch (cnpjEmptyException emptyException) {
+            System.err.println(emptyException);
+        }
+
+        try {
+            Agencia ag3 = new Agencia("Agencia 3", "5122453", "Rua D, 3423, Centro",
+                    null, null);
+            AppPrinter.imprimir("#Agencia 3", ag3);
+            AgenciaController.addAgencia(ag3);
+        } catch (cnpjNullException exception) {
+            System.err.println(exception);
+        } catch (cnpjEmptyException emptyException) {
+            System.err.println(emptyException);
+        }
+
+        try {
+            Agencia ag4 = new Agencia("Agencia 4", "", "Rua D, 3423, Centro",
+                    null, null);
+            AppPrinter.imprimir("#Agencia 3", ag4);
+            AgenciaController.addAgencia(ag4);
+        } catch (cnpjNullException exception) {
+            System.err.println(exception);
+        } catch (cnpjEmptyException emptyException) {
+            System.err.println(emptyException);
+        }
+
+        try {
+            Agencia ag5 = new Agencia("Agencia 3", null, "Rua D, 3423, Centro",
+                    null, null);
+            AppPrinter.imprimir("#Agencia 3", ag5);
+            AgenciaController.addAgencia(ag5);
+        } catch (cnpjNullException exception) {
+            System.err.println(exception);
+        } catch (cnpjEmptyException emptyException) {
+            System.err.println(emptyException);
+        }
     }
-    
+
 }

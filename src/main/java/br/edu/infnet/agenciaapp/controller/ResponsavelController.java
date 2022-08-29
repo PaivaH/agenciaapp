@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Responsavel;
 @Controller
 public class ResponsavelController {
     public static Map<Integer, Responsavel> responsaveis = new HashMap<Integer, Responsavel>();
-    public static Integer id = 1;
+    public static Integer id = 0;
 
     public static void addResponsavel(Responsavel responsavel){
-        responsavel.setId(id++);
+        responsavel.setId(++id);
         responsaveis.put(id, responsavel);
     }
 
@@ -40,8 +40,6 @@ public class ResponsavelController {
     @GetMapping(value = "/responsavel/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
-
-        System.out.println(id + " Excluido com sucesso");
 
         return "redirect:/responsavel/lista";
     }

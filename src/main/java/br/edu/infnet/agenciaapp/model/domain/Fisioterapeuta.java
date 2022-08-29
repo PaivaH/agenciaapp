@@ -33,8 +33,7 @@ public class Fisioterapeuta extends Profissional{
 
     @Override
     public String toString() {
-        return "Fisioterapeuta [atendeEmCasa=" + atendeEmCasa + ", numeroCrefito=" + numeroCrefito + ", regiaoCrefito="
-                + regiaoCrefito + "]";
+        return super.toString() + ";" + atendeEmCasa;
     }
         
 }

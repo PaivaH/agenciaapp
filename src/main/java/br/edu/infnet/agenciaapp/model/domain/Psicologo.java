@@ -43,8 +43,7 @@ public class Psicologo extends Profissional{
 
     @Override
     public String toString() {
-        return "Psicologo [atendeRemoto=" + atendeRemoto + ", numeroCrp=" + numeroCrp + ", regiaoCrp=" + regiaoCrp
-                + ", tempoSessao=" + tempoSessao + "]";
+        return super.toString() + ";" + atendeRemoto + ";" + tempoSessao;
     }
     
 }

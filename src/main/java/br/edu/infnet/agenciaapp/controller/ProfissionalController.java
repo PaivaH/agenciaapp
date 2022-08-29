@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Profissional;
 @Controller
 public class ProfissionalController {
     public static Map<Integer, Profissional> profissionais= new HashMap<Integer, Profissional>();
-    public static int id = 1;
+    public static int id = 0;
 
     public static void addProfissional (Profissional profissional) {
-        profissional.setId(id++);
+        profissional.setId(++id);
         profissionais.put(id, profissional);
     }
 
@@ -40,8 +40,6 @@ public class ProfissionalController {
     @GetMapping(value = "/profissional/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         excluir(id);
-
-        System.out.println(id + " Excluido com sucesso");
 
         return "redirect:/profissional/lista";
     }

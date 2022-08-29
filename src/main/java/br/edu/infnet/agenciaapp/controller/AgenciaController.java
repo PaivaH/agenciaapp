@@ -14,10 +14,10 @@ import br.edu.infnet.agenciaapp.model.domain.Agencia;
 @Controller
 public class AgenciaController {
     public static Map<Integer, Agencia> agencias = new HashMap<Integer, Agencia>();
-    public static Integer id = 1;
+    public static Integer id = 0;
 
     public static void addAgencia(Agencia agencia){
-        agencia.setId(id++);
+        agencia.setId(++id);
         agencias.put(id, agencia);
     }
 
