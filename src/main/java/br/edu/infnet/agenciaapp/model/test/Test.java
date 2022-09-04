@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.edu.infnet.agenciaapp.AppPrinter;
 
 @Component
@@ -19,6 +21,7 @@ public class Test implements ApplicationRunner{
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("Digite qualquer coisa");
         AppPrinter.readFromFile("agencia");
+        ObjectMapper mapper = new ObjectMapper();
         /*Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         scanner.close();

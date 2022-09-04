@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <div class="conteiner bg-light">
         <%@ include file="./components/nav.jsp" %>
         <div class="container">
