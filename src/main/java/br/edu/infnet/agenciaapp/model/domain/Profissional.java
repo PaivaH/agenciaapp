@@ -7,14 +7,14 @@ public abstract class Profissional implements IPrinter {
     protected String nome;
     protected int matricula;
     protected String especialidades;
-    protected Agencia agencia;
+    protected Clinica clinica;
 
-    public Agencia getAgencia() {
-        return agencia;
+    public Clinica getClinica() {
+        return clinica;
     }
 
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
+    public void setClinica(Clinica clinica) {
+        this.clinica = clinica;
     }
 
     public abstract String getConselhoRegional();

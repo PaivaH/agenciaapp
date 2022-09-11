@@ -5,14 +5,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
-import br.edu.infnet.agenciaapp.controller.ProfissionalController;
 import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
 import br.edu.infnet.agenciaapp.model.domain.Nutricionista;
 import br.edu.infnet.agenciaapp.model.domain.Profissional;
 import br.edu.infnet.agenciaapp.model.domain.Psicologo;
+import br.edu.infnet.agenciaapp.model.service.ProfissionalService;
 
 @Component
-public class ProfissionalTest implements ApplicationRunner{
+public class ProfissionalTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -21,14 +21,14 @@ public class ProfissionalTest implements ApplicationRunner{
         fisio1.setMatricula(3658);
         fisio1.setEspecialidades("Reabilitação, Torcicolo, Lordose");
         AppPrinter.imprimir("Fisioterapeuta 1", fisio1);
-        ProfissionalController.addProfissional(fisio1);
+        new ProfissionalService().addProfissional(fisio1);
 
         Profissional nutri1 = new Nutricionista();
         nutri1.setNome("Cristina");
         nutri1.setMatricula(864);
         nutri1.setEspecialidades("Emagrecimento");
         AppPrinter.imprimir("Nutricionista 1", nutri1);
-        ProfissionalController.addProfissional(nutri1);
+        new ProfissionalService().addProfissional(nutri1);
 
         Profissional ps1 = new Psicologo();
         ps1.setNome("Patricia");
@@ -36,7 +36,7 @@ public class ProfissionalTest implements ApplicationRunner{
         ps1.setMatricula(1223);
         ps1.getConselhoRegional();
         AppPrinter.imprimir("Psicologo", ps1);
-        ProfissionalController.addProfissional(ps1);
+        new ProfissionalService().addProfissional(ps1);
     }
-    
+
 }

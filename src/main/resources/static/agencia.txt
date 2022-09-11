@@ -1,3 +1,3 @@
-Agencia 1;12346789;Rua A, 235, Centro;
-Agencia 2;2312245;Rua B, 3123, Centro;
-Agencia 3;5122453;Rua D, 3423, Centro;
+Clinica1;12346789;Rua A, 235, Centro;
+Clinica2;2312245;Rua B, 3123, Centro;
+Clinica3;5122453;Rua D, 3423, Centro;

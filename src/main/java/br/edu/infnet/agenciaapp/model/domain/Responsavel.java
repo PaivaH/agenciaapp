@@ -11,12 +11,12 @@ public class Responsavel implements IPrinter {
     private String nome;
     private String cargo;
     private String email;
-    private List<Agencia> agencias;
+    private List<Clinica> clinicas;
 
     public Responsavel() {
     }
 
-    public Responsavel(String nome, String cargo, String email, List<Agencia> agencias)
+    public Responsavel(String nome, String cargo, String email, List<Clinica> clinicas)
             throws nameNullException, nameEmptyException {
         if (nome == null) {
             throw new nameNullException("Nome não pode ser nulo!");
@@ -27,15 +27,15 @@ public class Responsavel implements IPrinter {
         this.nome = nome;
         this.cargo = cargo;
         this.email = email;
-        this.agencias = agencias;
+        this.clinicas = clinicas;
     }
 
-    public List<Agencia> getAgencias() {
-        return agencias;
+    public List<Clinica> getClinicas() {
+        return clinicas;
     }
 
-    public void setAgencias(List<Agencia> agencias) {
-        this.agencias = agencias;
+    public void setClinicas(List<Clinica> clinicas) {
+        this.clinicas = clinicas;
     }
 
     public String getNome() {
@@ -72,7 +72,7 @@ public class Responsavel implements IPrinter {
 
     @Override
     public String toString() {
-        return nome  + ";" + cargo + ";" + email + ";" + agencias;
+        return nome  + ";" + cargo + ";" + email + ";" + clinicas;
     }
 
     @Override

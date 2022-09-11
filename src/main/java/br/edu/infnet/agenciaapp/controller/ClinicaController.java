@@ -6,24 +6,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.edu.infnet.agenciaapp.model.service.ResponsavelService;
+import br.edu.infnet.agenciaapp.model.service.ClinicaService;
 
 @Controller
-public class ResponsavelController {
+public class ClinicaController {
     @Autowired
-    ResponsavelService responsavelService;
+    private ClinicaService clinicaService;
 
-    @GetMapping(value = "/responsavel/lista")
+    @GetMapping(value = "/clinica/lista")
     public String telaHome(Model model) {
-        model.addAttribute("listagem", responsavelService.obterProfissionals());
+        model.addAttribute("listagem", clinicaService.obterClinicas());
 
-        return "/responsavel/lista";
+        return "/clinica/lista";
     }
 
-    @GetMapping(value = "/responsavel/{id}/excluir")
+    @GetMapping(value = "/clinica/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
-        responsavelService.excluir(id);
+        clinicaService.excluir(id);
 
-        return "redirect:/responsavel/lista";
+        return "redirect:/clinica/lista";
     }
 }

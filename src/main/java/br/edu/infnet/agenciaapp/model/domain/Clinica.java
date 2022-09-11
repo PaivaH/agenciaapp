@@ -2,11 +2,11 @@ package br.edu.infnet.agenciaapp.model.domain;
 
 import java.util.List;
 
-import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjEmptyException;
-import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjNullException;
+import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjEmptyException;
+import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjNullException;
 import br.edu.infnet.agenciaapp.model.interfaces.IPrinter;
 
-public class Agencia implements IPrinter {
+public class Clinica implements IPrinter {
     private Integer id;
     private String nome;
     private String cnpj;
@@ -14,10 +14,10 @@ public class Agencia implements IPrinter {
     private List<Profissional> profissionais;
     private Responsavel responsavel;
 
-    public Agencia() {
+    public Clinica() {
     }
 
-    public Agencia(String nome, String cnpj, String endereco, List<Profissional> profissionais,
+    public Clinica(String nome, String cnpj, String endereco, List<Profissional> profissionais,
             Responsavel responsavel) throws cnpjEmptyException, cnpjNullException {
 
         if (cnpj == null) {

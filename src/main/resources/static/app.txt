@@ -1,0 +1,46 @@
+P;Agencia APP;Projeto para cadastrar profissionais de saude e clinicas
+
+C;Usuario
+A;nome;String;nome do usuario
+A;email;String;e-mail do usuario
+A;senha;String;senha do usuario
+
+C;Clinica
+A;id;int;indice
+A;nome;String;nome da clinica
+A;cnpj;int;nome do usuario
+A;endereco;String;endereço da clinica
+A;responsavel;Responsavel;O responsavel pela clinica
+
+C;Profissional
+A;id;int;indice do profissional
+A;nome;String;nome do profissional
+A;matricula;int;matricula do profissional
+A;especialidades;String;especialidades do profissional
+
+C;Nutricionista
+A;id;int;indice do profissional
+A;nome;String;nome do profissional
+A;matricula;int;matricula do profissional
+A;especialidades;String;especialidades do profissional
+A;CRN;String;conselho profissional
+
+C;Fisioterapeuta
+A;id;int;indice do profissional
+A;nome;String;nome do profissional
+A;matricula;int;matricula do profissional
+A;especialidades;String;especialidades do profissional
+A;CREFITO;String;conselho profissional
+
+C;Psicologo
+A;id;int;indice do profissional
+A;nome;String;nome do profissional
+A;matricula;int;matricula do profissional
+A;especialidades;String;especialidades do profissional
+A;CRP;String;conselho profissional
+
+C;Responsavel
+A;id;int;indice do responsavel
+A;nome;String;nome do responsavel
+A;nome;String;cargo do responsavel
+A;email;String;e-mail do usuario

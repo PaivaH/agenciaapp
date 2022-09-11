@@ -7,7 +7,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Agencia App</title>
+    <title>ClinicaApp</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
     <div class="conteiner  bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
-            <h2>Agencia app</h2>
+            <h2>Clinicaapp</h2>
             <p>Projeto para cadastrar profissionais de saude em agencia</p>
 
             <h3>Classe: Profissional</h3>

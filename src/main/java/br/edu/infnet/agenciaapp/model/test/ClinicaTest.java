@@ -6,22 +6,22 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
-import br.edu.infnet.agenciaapp.controller.AgenciaController;
-import br.edu.infnet.agenciaapp.model.domain.Agencia;
-import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjEmptyException;
-import br.edu.infnet.agenciaapp.model.exception.agencia.cnpjNullException;
+import br.edu.infnet.agenciaapp.model.domain.Clinica;
+import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjEmptyException;
+import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjNullException;
+import br.edu.infnet.agenciaapp.model.service.ClinicaService;
 
 @Component
 @Order(1)
-public class AgenciaTest implements ApplicationRunner {
+public class ClinicaTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         try {
-            Agencia ag1 = new Agencia("Agencia 1", "12346789", "Rua A, 235, Centro",
+            Clinica ag1 = new Clinica("Clinica1", "12346789", "Rua A, 235, Centro",
                     null, null);
-            AppPrinter.imprimir("#Agencia 1", ag1);
-            AgenciaController.addAgencia(ag1);
+            AppPrinter.imprimir("#Clinica1", ag1);
+            new ClinicaService().addClinica(ag1);
 
         } catch (cnpjNullException exception) {
             System.err.println(exception);
@@ -30,10 +30,10 @@ public class AgenciaTest implements ApplicationRunner {
         }
 
         try {
-            Agencia ag2 = new Agencia("Agencia 2", "2312245", "Rua B, 3123, Centro",
+            Clinica ag2 = new Clinica("Clinica2", "2312245", "Rua B, 3123, Centro",
                     null, null);
-            AppPrinter.imprimir("#Agencia 2", ag2);
-            AgenciaController.addAgencia(ag2);
+            AppPrinter.imprimir("#Clinica2", ag2);
+            new ClinicaService().addClinica(ag2);
         } catch (cnpjNullException exception) {
             System.err.println(exception);
         } catch (cnpjEmptyException emptyException) {
@@ -41,10 +41,10 @@ public class AgenciaTest implements ApplicationRunner {
         }
 
         try {
-            Agencia ag3 = new Agencia("Agencia 3", "5122453", "Rua D, 3423, Centro",
+            Clinica ag3 = new Clinica("Clinica3", "5122453", "Rua D, 3423, Centro",
                     null, null);
-            AppPrinter.imprimir("#Agencia 3", ag3);
-            AgenciaController.addAgencia(ag3);
+            AppPrinter.imprimir("#Clinica3", ag3);
+            new ClinicaService().addClinica(ag3);
         } catch (cnpjNullException exception) {
             System.err.println(exception);
         } catch (cnpjEmptyException emptyException) {
@@ -52,10 +52,10 @@ public class AgenciaTest implements ApplicationRunner {
         }
 
         try {
-            Agencia ag4 = new Agencia("Agencia 4", "", "Rua D, 3423, Centro",
+            Clinica ag4 = new Clinica("Clinica4", "", "Rua D, 3423, Centro",
                     null, null);
-            AppPrinter.imprimir("#Agencia 3", ag4);
-            AgenciaController.addAgencia(ag4);
+            AppPrinter.imprimir("#Clinica3", ag4);
+            new ClinicaService().addClinica(ag4);
         } catch (cnpjNullException exception) {
             System.err.println(exception);
         } catch (cnpjEmptyException emptyException) {
@@ -63,10 +63,10 @@ public class AgenciaTest implements ApplicationRunner {
         }
 
         try {
-            Agencia ag5 = new Agencia("Agencia 3", null, "Rua D, 3423, Centro",
+            Clinica ag5 = new Clinica("Clinica3", null, "Rua D, 3423, Centro",
                     null, null);
-            AppPrinter.imprimir("#Agencia 3", ag5);
-            AgenciaController.addAgencia(ag5);
+            AppPrinter.imprimir("#Clinica3", ag5);
+            new ClinicaService().addClinica(ag5);
         } catch (cnpjNullException exception) {
             System.err.println(exception);
         } catch (cnpjEmptyException emptyException) {
