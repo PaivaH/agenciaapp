@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,10 +15,8 @@
     <div class="conteiner  bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
-            <h2>Clinicaapp</h2>
-            <p>Projeto para cadastrar profissionais de saude em agencia</p>
-
-            <h3>Classe: Profissional</h3>
+            <h3>Classe: Fisioterapeuta</h3>
+            <button type="button" class="btn btn-primary"><a href="/fisioterapeuta/incluir" class="link-light">Adicionar</a></button>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -26,8 +24,8 @@
                         <th>Nome</th>
                         <th>Matricula</th>
                         <th>Especialidades</th>
-                        <th>CREFITO</th>
                         <th>Atende em casa?</th>
+                        <th>CREFITO</th>
                         <th>excluir</th>
                     </tr>
                 </thead>
@@ -39,8 +37,8 @@
                                 <td>${i.nome}</td>
                                 <td>${i.matricula}</td>
                                 <td>${i.especialidades}</td>
-                                <td>${i.getConselhoRegional()}</td>
                                 <td>${i.atendeEmCasa}</td>
+                                <td>${i.getConselhoRegional()}</td>
                                 <td><a href="/fisioterapeuta/${i.id}/excluir">excluir</a></td>
                             </tr>
                         </c:forEach>

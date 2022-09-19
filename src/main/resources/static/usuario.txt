@@ -1,3 +1,4 @@
+auth;auth@gmail.com;123
 usuario1;usuario1@gmail.com;123
 usuario2;usuario2@gmail.com;123
 usuario3;usuario3@gmail.com;123

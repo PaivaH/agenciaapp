@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,18 +15,17 @@
     <div class="conteiner  bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
-            <h2>Clinicaapp</h2>
-            <p>Projeto para cadastrar profissionais de saude em agencia</p>
-
-            <h3>Classe: Profissional</h3>
+            <h3>Classe: Psicologo</h3>
+            <button type="button" class="btn btn-primary"><a href="/psicologo/incluir" class="link-light">Adicionar</a></button>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Matricula</th>
-                        <th>Tempo sessao</th>
                         <th>Especialidades</th>
+                        <th>Tempo sessao</th>
+                        <th>Atende remoto?</th>
                         <th>CRP</th>
                         <th>Links</th>
                     </tr>
@@ -37,8 +36,9 @@
                             <td>${i.id}</td>
                             <td>${i.nome}</td>
                             <td>${i.matricula}</td>
-                            <td>${i.tempoSessao}</td>
                             <td>${i.especialidades}</td>
+                            <td>${i.tempoSessao}</td>
+                            <td>${i.atendeRemoto}</td>
                             <td>${i.getConselhoRegional()}</td>
                             <td><a href="/psicologo/${i.id}/excluir">excluir</a></td>
                         </tr>

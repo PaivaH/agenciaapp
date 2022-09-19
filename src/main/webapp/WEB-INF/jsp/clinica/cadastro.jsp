@@ -15,23 +15,23 @@
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
             <h2>Cadastramento de usuarios</h2>
-            <form action="/usuario/incluir" method="post">
+            <form action="/clinica/incluir" method="post">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" class="form-control" id="nome" name="nome" 
                             placeholder="Entre com seu nome">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                            placeholder="Entre com seu e-mail">
+                    <label for="cnpj">cnpj:</label>
+                    <input type="text" class="form-control" id="cnpj" name="cnpj" 
+                            placeholder="Entre com seu cnpj">
                 </div>
                 <div class="form-group">
-                    <label for="senha">Password:</label>
-                    <input type="password" class="form-control" id="senha" name="senha" 
-                            placeholder="Entre com sua senha">
+                    <label for="endereco">endereco:</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" 
+                            placeholder="Entre com seu endereco">
                 </div>
-                <button type="submit" class="btn btn-primary">Logar</button>
+                <button type="submit" class="btn btn-primary">Adicionar</button>
             </form>
         </div>
     </div>

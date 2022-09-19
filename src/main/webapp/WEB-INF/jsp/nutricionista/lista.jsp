@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,18 +15,16 @@
     <div class="conteiner  bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
-            <h2>Clinicaapp</h2>
-            <p>Projeto para cadastrar profissionais de saude em agencia</p>
-
-            <h3>Classe: Profissional</h3>
+            <h3>Classe: Nutricionista</h3>
+            <button type="button" class="btn btn-primary"><a href="/nutricionista/incluir" class="link-light">Adicionar</a></button>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Matricula</th>
-                        <th>Esportivo</th>
                         <th>Especialidades</th>
+                        <th>Esportivo</th>
                         <th>CRN</th>
                         <th>Link</th>
                     </tr>
@@ -37,8 +35,8 @@
                             <td>${i.id}</td>
                             <td>${i.nome}</td>
                             <td>${i.matricula}</td>
-                            <td>${i.esportivo}</td>
                             <td>${i.especialidades}</td>
+                            <td>${i.esportivo}</td>
                             <td>${i.getConselhoRegional()}</td>
                             <td><a href="/nutricionista/${i.id}/excluir">excluir</a></td>
                         </tr>

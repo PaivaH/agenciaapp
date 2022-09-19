@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.infnet.agenciaapp.model.domain.Responsavel;
 import br.edu.infnet.agenciaapp.model.service.ResponsavelService;
 
 @Controller
@@ -18,6 +20,19 @@ public class ResponsavelController {
         model.addAttribute("listagem", responsavelService.obterProfissionals());
 
         return "/responsavel/lista";
+    }
+
+    @GetMapping(value = "/responsavel/incluir")
+    public String telaCadastro() {
+        return "responsavel/cadastro";
+    }
+
+    @PostMapping(value = "/responsavel/incluir")
+    public String inclusao(Responsavel responsavel) {
+        System.out.println(responsavel);
+        responsavelService.addResponsavel(responsavel);
+
+        return "redirect:/responsavel/lista";
     }
 
     @GetMapping(value = "/responsavel/{id}/excluir")

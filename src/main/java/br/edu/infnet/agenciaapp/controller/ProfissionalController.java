@@ -20,6 +20,19 @@ public class ProfissionalController {
         return "/profissional/lista";
     }
 
+    /*@GetMapping(value = "/profissional/incluir")
+    public String telaCadastro() {
+        return "profissional/cadastro";
+    }
+
+    @PostMapping(value = "/profissional/incluir")
+    public String inclusao(Profissional profissional) {
+        System.out.println(profissional);
+        profissionalService.addProfissional(profissional);
+
+        return "redirect:/profissional/lista";
+    }*/
+
     @GetMapping(value = "/profissional/{id}/excluir")
     public String exclusao(@PathVariable Integer id) {
         profissionalService.excluir(id);

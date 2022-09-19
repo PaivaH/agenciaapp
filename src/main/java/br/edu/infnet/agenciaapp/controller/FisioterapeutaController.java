@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
 import br.edu.infnet.agenciaapp.model.service.FisioterapeutaService;
 
 @Controller
@@ -18,6 +20,19 @@ public class FisioterapeutaController {
         model.addAttribute("listagem", fisioterapeutaService.obterFisioterapeutas());
 
         return "/fisioterapeuta/lista";
+    }
+
+    @GetMapping(value = "/fisioterapeuta/incluir")
+    public String telaCadastro() {
+        return "fisioterapeuta/cadastro";
+    }
+
+    @PostMapping(value = "/fisioterapeuta/incluir")
+    public String inclusao(Fisioterapeuta fisioterapeuta) {
+        System.out.println(fisioterapeuta);
+        fisioterapeutaService.addFisioterapeuta(fisioterapeuta);
+
+        return "redirect:/fisioterapeuta/lista";
     }
     
     @GetMapping(value = "/fisioterapeuta/{id}/excluir")
