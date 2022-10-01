@@ -1,5 +1,6 @@
 package br.edu.infnet.agenciaapp.model.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,8 @@ import br.edu.infnet.agenciaapp.model.service.NutricionistaService;
 
 @Component
 public class NutricionistaTest implements ApplicationRunner {
+    @Autowired
+    NutricionistaService nutricionistaService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -21,7 +24,7 @@ public class NutricionistaTest implements ApplicationRunner {
         nutri1.setRegiaoCrn("SP 9");
         nutri1.setNumeroCrn("568314");
         AppPrinter.imprimir("Nutricionista 1", nutri1);
-        new NutricionistaService().addNutricionista(nutri1);
+        nutricionistaService.addNutricionista(nutri1);
 
         Nutricionista nutri2 = new Nutricionista();
         nutri2.setNome("Andressa Brito");
@@ -31,7 +34,7 @@ public class NutricionistaTest implements ApplicationRunner {
         nutri2.setRegiaoCrn("SP 9");
         nutri2.setNumeroCrn("55646");
         AppPrinter.imprimir("Nutricionista 2", nutri2);
-        new NutricionistaService().addNutricionista(nutri2);
+        nutricionistaService.addNutricionista(nutri2);
 
         Nutricionista nutri3 = new Nutricionista();
         nutri3.setNome("Miguel do Santos");
@@ -41,7 +44,7 @@ public class NutricionistaTest implements ApplicationRunner {
         nutri3.setRegiaoCrn("SP 9");
         nutri3.setNumeroCrn("542415");
         AppPrinter.imprimir("Nutricionista 3", nutri3);
-        new NutricionistaService().addNutricionista(nutri3);
+        nutricionistaService.addNutricionista(nutri3);
     }
 
 }

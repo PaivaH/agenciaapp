@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
+import br.edu.infnet.agenciaapp.model.service.ClinicaService;
 import br.edu.infnet.agenciaapp.model.service.FisioterapeutaService;
 
 @Controller
 public class FisioterapeutaController {
     @Autowired
     private FisioterapeutaService fisioterapeutaService;
+
+    @Autowired
+    private ClinicaService clinicaService;
 
     @GetMapping(value = "/fisioterapeuta/lista")
     public String telaHome(Model model) {
@@ -23,7 +27,9 @@ public class FisioterapeutaController {
     }
 
     @GetMapping(value = "/fisioterapeuta/incluir")
-    public String telaCadastro() {
+    public String telaCadastro(Model model) {
+        model.addAttribute("clinicas", clinicaService.obterClinicas());
+
         return "fisioterapeuta/cadastro";
     }
 

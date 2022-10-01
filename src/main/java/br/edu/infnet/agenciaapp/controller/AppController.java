@@ -42,7 +42,7 @@ public class AppController {
             @RequestParam String senha) {
         Usuario usuario = usuarioService.validar(email, senha);
         if (usuario != null) {
-            model.addAttribute("user", usuario.getNome());
+            model.addAttribute("user", usuario);
 
             // return "redirect:/";
             return "redirect:/";

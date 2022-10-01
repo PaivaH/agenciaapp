@@ -1,29 +1,25 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
+import br.edu.infnet.agenciaapp.model.repository.FisioterapeutaRepository;
 
 @Service
 public class FisioterapeutaService {
-    public static Map<Integer, Fisioterapeuta> fisioterapeutas = new HashMap<Integer, Fisioterapeuta>();
-    public static int id = 0;
+    @Autowired
+    FisioterapeutaRepository fisioterapeutaRepository;
 
     public void addFisioterapeuta(Fisioterapeuta fisioterapeuta) {
-        fisioterapeuta.setId(++id);
-        fisioterapeutas.put(id, fisioterapeuta);
+        fisioterapeutaRepository.save(fisioterapeuta);
     }
 
-    public Collection<Fisioterapeuta> obterFisioterapeutas() {
-        return fisioterapeutas.values();
+    public Iterable<Fisioterapeuta> obterFisioterapeutas() {
+        return fisioterapeutaRepository.findAll();
     }
 
     public void excluir(Integer id) {
-        fisioterapeutas.remove(id);
-        System.out.println(id + " Excluido com sucesso");
+        fisioterapeutaRepository.deleteById(id);
     }
 }

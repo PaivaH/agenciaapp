@@ -1,29 +1,30 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Responsavel;
+import br.edu.infnet.agenciaapp.model.repository.ResponsavelRepository;
 
 @Service
 public class ResponsavelService {
-    public static Map<Integer, Responsavel> responsaveis = new HashMap<Integer, Responsavel>();
-    public static Integer id = 0;
+
+    @Autowired
+    ResponsavelRepository responsavelRepositoy;
 
     public void addResponsavel(Responsavel responsavel) {
-        responsavel.setId(++id);
-        responsaveis.put(id, responsavel);
+        responsavelRepositoy.save(responsavel);
     }
 
-    public Collection<Responsavel> obterProfissionals() {
-        return responsaveis.values();
+    public Responsavel obterResponsavelById(Integer id){
+        return responsavelRepositoy.findById(id).get();
+    }
+
+    public Iterable<Responsavel> obterResponsaveis() {
+        return responsavelRepositoy.findAll();
     }
 
     public void excluir(Integer id) {
-        responsaveis.remove(id);
-        System.out.println(id + " Excluido com sucesso");
+        responsavelRepositoy.deleteById(id);
     }
 }

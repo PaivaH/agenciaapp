@@ -1,5 +1,8 @@
 package br.edu.infnet.agenciaapp.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Psicologo extends Profissional{
     private String regiaoCrp;
     private String numeroCrp;

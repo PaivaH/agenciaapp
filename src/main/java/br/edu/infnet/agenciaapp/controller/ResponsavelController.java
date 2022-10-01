@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.agenciaapp.model.domain.Responsavel;
+import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.ResponsavelService;
 
 @Controller
@@ -17,7 +19,7 @@ public class ResponsavelController {
 
     @GetMapping(value = "/responsavel/lista")
     public String telaHome(Model model) {
-        model.addAttribute("listagem", responsavelService.obterProfissionals());
+        model.addAttribute("listagem", responsavelService.obterResponsaveis());
 
         return "/responsavel/lista";
     }
@@ -28,8 +30,8 @@ public class ResponsavelController {
     }
 
     @PostMapping(value = "/responsavel/incluir")
-    public String inclusao(Responsavel responsavel) {
-        System.out.println(responsavel);
+    public String inclusao(Responsavel responsavel, @SessionAttribute("user") Usuario usuario) {
+        responsavel.setUsuario(usuario);
         responsavelService.addResponsavel(responsavel);
 
         return "redirect:/responsavel/lista";

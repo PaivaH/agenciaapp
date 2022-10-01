@@ -1,5 +1,6 @@
 package br.edu.infnet.agenciaapp.model.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,8 @@ import br.edu.infnet.agenciaapp.model.service.FisioterapeutaService;
 
 @Component
 public class FisioterapeutaTest implements ApplicationRunner{
+    @Autowired
+    FisioterapeutaService fisioterapeutaService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -21,7 +24,7 @@ public class FisioterapeutaTest implements ApplicationRunner{
         fisio1.setEspecialidades("Reabilitação, Torcicolo, Lordose");
         fisio1.setAtendeEmCasa(false);
         AppPrinter.imprimir("Fisioterapeuta 1", fisio1);
-        new FisioterapeutaService().addFisioterapeuta(fisio1);
+        fisioterapeutaService.addFisioterapeuta(fisio1);
 
         Fisioterapeuta fisio2 = new Fisioterapeuta();
         fisio2.setNome("Pablo Silva");
@@ -31,7 +34,7 @@ public class FisioterapeutaTest implements ApplicationRunner{
         fisio2.setEspecialidades("Reabilitação, Torcicolo");
         fisio2.setAtendeEmCasa(true);
         AppPrinter.imprimir("Fisioterapeuta 2", fisio2);
-        new FisioterapeutaService().addFisioterapeuta(fisio2);
+        fisioterapeutaService.addFisioterapeuta(fisio2);
 
         Fisioterapeuta fisio3 = new Fisioterapeuta();
         fisio3.setNome("Ricardo Amaro");
@@ -41,7 +44,7 @@ public class FisioterapeutaTest implements ApplicationRunner{
         fisio3.setEspecialidades("Torcicolp");
         fisio3.setAtendeEmCasa(true);
         AppPrinter.imprimir("Fisioterapeuta 3", fisio3);
-        new FisioterapeutaService().addFisioterapeuta(fisio3);
+        fisioterapeutaService.addFisioterapeuta(fisio3);
     }
     
 }

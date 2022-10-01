@@ -14,7 +14,7 @@
     <div class="conteiner bg-light">
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
-            <h2>Cadastramento de usuarios</h2>
+            <h2>Cadastramento de fisioterapeuta</h2>
             <form action="/fisioterapeuta/incluir" method="post">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -44,6 +44,14 @@
                     <label for="numeroCrefito">Numero Crefito:</label>
                     <input type="number" class="form-control" id="numeroCrefito" name="numeroCrefito" 
                             placeholder="Numero Crefito">
+                </div>
+                <div class="form-group">
+                    <label for="clinica">Clinica:</label>
+                    <select class="form-control" id="clinica" name="clinica">
+                        <c:forEach var="c" items="${clinicas}">
+                            <option value="${c.id}">${c.nome}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Adicionar</button>
             </form>

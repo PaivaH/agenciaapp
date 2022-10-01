@@ -1,22 +1,33 @@
 package br.edu.infnet.agenciaapp.model.domain;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import br.edu.infnet.agenciaapp.model.exception.responsavel.nameEmptyException;
 import br.edu.infnet.agenciaapp.model.exception.responsavel.nameNullException;
 import br.edu.infnet.agenciaapp.model.interfaces.IPrinter;
 
+@Entity
 public class Responsavel implements IPrinter {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
     private String cargo;
     private String email;
-    private List<Clinica> clinicas;
+
+    @ManyToOne
+    private Usuario usuario;
 
     public Responsavel() {
     }
 
-    public Responsavel(String nome, String cargo, String email, List<Clinica> clinicas)
+    public Responsavel(String nome, String cargo, String email)
             throws nameNullException, nameEmptyException {
         if (nome == null) {
             throw new nameNullException("Nome não pode ser nulo!");
@@ -27,15 +38,14 @@ public class Responsavel implements IPrinter {
         this.nome = nome;
         this.cargo = cargo;
         this.email = email;
-        this.clinicas = clinicas;
     }
 
-    public List<Clinica> getClinicas() {
-        return clinicas;
+    public Integer getId() {
+        return id;
     }
 
-    public void setClinicas(List<Clinica> clinicas) {
-        this.clinicas = clinicas;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -62,17 +72,17 @@ public class Responsavel implements IPrinter {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public String toString() {
-        return nome  + ";" + cargo + ";" + email + ";" + clinicas;
+        return nome + ";" + cargo + ";" + email + ";";
     }
 
     @Override

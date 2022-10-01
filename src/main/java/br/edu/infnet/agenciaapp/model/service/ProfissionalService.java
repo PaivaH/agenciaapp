@@ -1,29 +1,25 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Profissional;
+import br.edu.infnet.agenciaapp.model.repository.ProfissionalRepository;
 
 @Service
 public class ProfissionalService {
-    public static Map<Integer, Profissional> profissionais = new HashMap<Integer, Profissional>();
-    public static int id = 0;
+    @Autowired
+    ProfissionalRepository profissionalRepository;
 
     public void addProfissional(Profissional profissional) {
-        profissional.setId(++id);
-        profissionais.put(id, profissional);
+        profissionalRepository.save(profissional);
     }
 
-    public Collection<Profissional> obterProfissionals() {
-        return profissionais.values();
+    public Iterable<Profissional> obterProfissionals() {
+        return profissionalRepository.findAll();
     }
 
     public void excluir(Integer id) {
-        profissionais.remove(id);
-        System.out.println(id + " Excluido com sucesso");
+        profissionalRepository.deleteById(id);
     }
 }

@@ -1,23 +1,36 @@
 package br.edu.infnet.agenciaapp.model.domain;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjEmptyException;
 import br.edu.infnet.agenciaapp.model.exception.clinica.cnpjNullException;
 import br.edu.infnet.agenciaapp.model.interfaces.IPrinter;
 
+@Entity
 public class Clinica implements IPrinter {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
     private String cnpj;
     private String endereco;
-    private List<Profissional> profissionais;
+
+    @ManyToOne
     private Responsavel responsavel;
+
+    /*@OneToMany(targetEntity = Profissional.class)
+    private List<Profissional> profissionais;*/
 
     public Clinica() {
     }
 
-    public Clinica(String nome, String cnpj, String endereco, List<Profissional> profissionais,
+    public Clinica(String nome, String cnpj, String endereco,
             Responsavel responsavel) throws cnpjEmptyException, cnpjNullException {
 
         if (cnpj == null) {
@@ -29,8 +42,25 @@ public class Clinica implements IPrinter {
         this.cnpj = cnpj;
         this.nome = nome;
         this.endereco = endereco;
-        this.profissionais = profissionais;
         this.responsavel = responsavel;
+    }
+
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCnpj() {
@@ -49,41 +79,17 @@ public class Clinica implements IPrinter {
         this.endereco = endereco;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Profissional> getProfissionais() {
-        return profissionais;
-    }
-
-    public void setProfissionais(List<Profissional> profissionais) {
-        this.profissionais = profissionais;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public Responsavel getresponsavel() {
+    public Responsavel getResponsavel() {
         return responsavel;
     }
 
-    public void setresponsavel(Responsavel responsavel) {
+    public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;
     }
 
     @Override
     public String toString() {
-        return nome + ";" + cnpj + ";" + endereco + ";" + responsavel;
+        return nome + ";" + cnpj + ";" + endereco + ";";
     }
 
     @Override

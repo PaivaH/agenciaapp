@@ -1,5 +1,8 @@
 package br.edu.infnet.agenciaapp.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Nutricionista extends Profissional{
     private String regiaoCrn;
     private String numeroCrn;

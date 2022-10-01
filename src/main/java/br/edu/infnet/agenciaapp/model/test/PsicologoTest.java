@@ -1,5 +1,6 @@
 package br.edu.infnet.agenciaapp.model.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,8 @@ import br.edu.infnet.agenciaapp.model.service.PsicologoService;
 
 @Component
 public class PsicologoTest implements ApplicationRunner {
+    @Autowired
+    PsicologoService psicologoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -23,7 +26,7 @@ public class PsicologoTest implements ApplicationRunner {
         ps1.setAtendeRemoto(true);
         ps1.getConselhoRegional();
         AppPrinter.imprimir("Psicologo", ps1);
-        new PsicologoService().addPsicologo(ps1);
+        psicologoService.addPsicologo(ps1);
 
         Psicologo ps2 = new Psicologo();
         ps2.setNome("Dante Nogueira");
@@ -35,7 +38,7 @@ public class PsicologoTest implements ApplicationRunner {
         ps1.setAtendeRemoto(true);
         ps2.getConselhoRegional();
         AppPrinter.imprimir("Psicologo", ps2);
-        new PsicologoService().addPsicologo(ps2);
+        psicologoService.addPsicologo(ps2);
 
         Psicologo ps3 = new Psicologo();
         ps3.setNome("Caio Gomes");
@@ -47,7 +50,7 @@ public class PsicologoTest implements ApplicationRunner {
         ps1.setAtendeRemoto(false);
         ps3.getConselhoRegional();
         AppPrinter.imprimir("Psicologo", ps3);
-        new PsicologoService().addPsicologo(ps3);
+        psicologoService.addPsicologo(ps3);
     }
 
 }

@@ -1,29 +1,25 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Psicologo;
+import br.edu.infnet.agenciaapp.model.repository.PsicologoRepository;
 
 @Service
 public class PsicologoService {
-    public static Map<Integer, Psicologo> psicologos= new HashMap<Integer, Psicologo>();
-    public static Integer id = 0;
+    @Autowired
+    PsicologoRepository psicologoRepository;
 
     public  void addPsicologo (Psicologo psicologo) {
-        psicologo.setId(++id);
-        psicologos.put(id, psicologo);
+        psicologoRepository.save(psicologo);
     }
 
-    public  Collection<Psicologo> obterPsicologos() {
-        return psicologos.values();
+    public  Iterable<Psicologo> obterPsicologos() {
+        return psicologoRepository.findAll();
     }
 
     public  void excluir(Integer id) {
-        psicologos.remove(id);
-        System.out.println(id + " Excluido com sucesso");
+        psicologoRepository.deleteById(id);
     }
 }

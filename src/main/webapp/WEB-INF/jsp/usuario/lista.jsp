@@ -34,7 +34,7 @@
                             <td>${i.nome}</td>
                             <td>${i.email}</td>
                             <td>${i.senha}</td>
-                            <td><a href="/usuario/${i.email}/excluir">excluir</a></td>
+                            <td><a href="/usuario/${i.id}/excluir">excluir</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

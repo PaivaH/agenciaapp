@@ -1,5 +1,8 @@
 package br.edu.infnet.agenciaapp.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Fisioterapeuta extends Profissional{
     private String regiaoCrefito;
     private String numeroCrefito;

@@ -1,30 +1,26 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Nutricionista;
+import br.edu.infnet.agenciaapp.model.repository.NutricionistaRepository;
 
 @Service
 public class NutricionistaService {
-    public static Map<Integer, Nutricionista> nutricionistas = new HashMap<Integer, Nutricionista>();
-    public static int id = 0;
+    @Autowired
+    NutricionistaRepository nutricionistaRepository;
 
     public void addNutricionista(Nutricionista nutricionista) {
-        nutricionista.setId(++id);
-        nutricionistas.put(id, nutricionista);
+        nutricionistaRepository.save(nutricionista);
     }
 
-    public Collection<Nutricionista> obterNutricionistas() {
-        return nutricionistas.values();
+    public Iterable<Nutricionista> obterNutricionistas() {
+        return nutricionistaRepository.findAll();
     }
 
     public void excluir(Integer id) {
-        nutricionistas.remove(id);
-        System.out.println(id + " Excluido com sucesso");
+        nutricionistaRepository.deleteById(id);
     }
 
 }

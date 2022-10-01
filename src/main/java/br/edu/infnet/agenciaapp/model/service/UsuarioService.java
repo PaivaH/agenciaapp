@@ -1,23 +1,29 @@
 package br.edu.infnet.agenciaapp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.agenciaapp.model.domain.Usuario;
+import br.edu.infnet.agenciaapp.model.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-    public static Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
+    
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public void incluir(Usuario usuario) {
-        usuarios.put(usuario.getEmail(), usuario);
+        usuarioRepository.save(usuario);
     }
 
     public Usuario validar(String email, String senha) {
-        Usuario usuario = usuarios.get(email);
+        Usuario usuario = null;
+        
+        try{
+            usuario = usuarioRepository.findByEmail(email);
+        } catch (Exception exception){
+            exception.getMessage();
+        }
 
         if (senha != null && senha.equals(usuario.getSenha())) {
             return usuario;
@@ -26,12 +32,11 @@ public class UsuarioService {
         return null;
     }
 
-    public Collection<Usuario> obterUsuarios() {
-        return usuarios.values();
+    public Iterable<Usuario> obterUsuarios() {
+        return usuarioRepository.findAll();
     }
 
-    public void excluir(String email) {
-        usuarios.remove(email);
-        System.out.println(email + " Excluido com sucesso");
+    public void excluir(Integer id) {
+        usuarioRepository.deleteById(id);
     }
 }
