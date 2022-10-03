@@ -16,7 +16,8 @@
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
             <h3>Classe: Clinica</h3>
-            <button type="button" class="btn btn-primary"><a href="/clinica/incluir" class="link-light">Adicionar</a></button>
+            <button type="button" class="btn btn-primary"><a href="/clinica/incluir"
+                    class="link-light">Adicionar</a></button>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -39,6 +40,9 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <c:if test="${empty listagem}">
+                <p>listagem vazia!!</p>
+            </c:if>
         </div>
     </div>
 </body>

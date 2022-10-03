@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.UsuarioService;
@@ -16,8 +17,12 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping(value = "/usuario/lista")
-    public String telaHome(Model model) {
-        model.addAttribute("listagem", usuarioService.obterUsuarios());
+    public String telaHome(Model model, @SessionAttribute("user") Usuario usuario) {
+        if (usuario.getAdmin()) {
+            model.addAttribute("listagem", usuarioService.obterUsuarios());
+        } else {
+            model.addAttribute("usuarioLogado", usuarioService.obterUsuario(usuario.getId()));
+        }
 
         return "/usuario/lista";
     }

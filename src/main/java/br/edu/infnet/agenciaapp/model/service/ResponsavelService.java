@@ -1,5 +1,7 @@
 package br.edu.infnet.agenciaapp.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +12,25 @@ import br.edu.infnet.agenciaapp.model.repository.ResponsavelRepository;
 public class ResponsavelService {
 
     @Autowired
-    ResponsavelRepository responsavelRepositoy;
+    ResponsavelRepository responsavelRepository;
 
     public void addResponsavel(Responsavel responsavel) {
-        responsavelRepositoy.save(responsavel);
+        responsavelRepository.save(responsavel);
     }
 
     public Responsavel obterResponsavelById(Integer id){
-        return responsavelRepositoy.findById(id).get();
+        return responsavelRepository.findById(id).get();
+    }
+
+    public List<Responsavel> obterResponsaveisPorUsuario(Integer id){
+        return responsavelRepository.obterResponsaveis(id);
     }
 
     public Iterable<Responsavel> obterResponsaveis() {
-        return responsavelRepositoy.findAll();
+        return responsavelRepository.findAll();
     }
 
     public void excluir(Integer id) {
-        responsavelRepositoy.deleteById(id);
+        responsavelRepository.deleteById(id);
     }
 }

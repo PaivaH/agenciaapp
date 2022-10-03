@@ -18,6 +18,16 @@ public class Usuario implements IPrinter {
     private String email;
     private String senha;
 
+    private Boolean admin = false;
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
     public Integer getId() {
         return id;
     }

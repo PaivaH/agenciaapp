@@ -19,6 +19,10 @@ public class NutricionistaService {
         return nutricionistaRepository.findAll();
     }
 
+    public Iterable<Nutricionista> obterNutricionistasPorUsuarios(Integer id) {
+        return nutricionistaRepository.obterProfissionaisPorUsuario(id);
+    }
+
     public void excluir(Integer id) {
         nutricionistaRepository.deleteById(id);
     }

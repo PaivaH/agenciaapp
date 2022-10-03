@@ -40,6 +40,9 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <c:if test="${empty listagem}">
+                <p>listagem vazia!!</p>
+            </c:if>
         </div>
     </div>
 </body>

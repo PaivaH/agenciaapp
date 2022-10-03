@@ -8,7 +8,7 @@ import br.edu.infnet.agenciaapp.model.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-    
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -18,15 +18,14 @@ public class UsuarioService {
 
     public Usuario validar(String email, String senha) {
         Usuario usuario = null;
-        
-        try{
-            usuario = usuarioRepository.findByEmail(email);
-        } catch (Exception exception){
-            exception.getMessage();
-        }
 
-        if (senha != null && senha.equals(usuario.getSenha())) {
-            return usuario;
+        try {
+            usuario = usuarioRepository.findByEmail(email);
+            if (senha != null && senha.equals(usuario.getSenha())) {
+                return usuario;
+            }
+        } catch (Exception exception) {
+            exception.getMessage();
         }
 
         return null;
@@ -34,6 +33,10 @@ public class UsuarioService {
 
     public Iterable<Usuario> obterUsuarios() {
         return usuarioRepository.findAll();
+    }
+
+    public Usuario obterUsuario(Integer id) {
+        return usuarioRepository.findById(id).get();
     }
 
     public void excluir(Integer id) {

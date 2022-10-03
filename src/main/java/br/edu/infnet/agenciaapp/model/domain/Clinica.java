@@ -24,9 +24,6 @@ public class Clinica implements IPrinter {
     @ManyToOne
     private Responsavel responsavel;
 
-    /*@OneToMany(targetEntity = Profissional.class)
-    private List<Profissional> profissionais;*/
-
     public Clinica() {
     }
 

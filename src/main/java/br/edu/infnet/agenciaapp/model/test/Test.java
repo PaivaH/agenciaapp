@@ -13,7 +13,7 @@ import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.UsuarioService;
 
 @Component
-@Order()
+@Order(2)
 public class Test implements ApplicationRunner {
     private Usuario usuario;
 
@@ -35,6 +35,7 @@ public class Test implements ApplicationRunner {
                 usuario.setNome(campos[0]);
                 usuario.setEmail(campos[1]);
                 usuario.setSenha(campos[2]);
+                usuario.setAdmin(Boolean.valueOf(campos[3]));
 
                 usuarioService.incluir(usuario);
 

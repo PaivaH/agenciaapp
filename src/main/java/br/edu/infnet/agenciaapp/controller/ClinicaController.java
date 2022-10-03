@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.agenciaapp.model.domain.Clinica;
+import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.ClinicaService;
 import br.edu.infnet.agenciaapp.model.service.ResponsavelService;
 
@@ -20,16 +22,26 @@ public class ClinicaController {
     private ResponsavelService responsavelService;
 
     @GetMapping(value = "/clinica/lista")
-    public String telaHome(Model model) {
-        model.addAttribute("listagem", clinicaService.obterClinicas());
+    public String telaHome(Model model, @SessionAttribute("user") Usuario usuario) {
+
+        if(usuario.getAdmin()){
+            model.addAttribute("listagem", clinicaService.obterClinicas());
+        } else{
+            model.addAttribute("listagem", clinicaService.obterClinicasPorUsuario(usuario.getId()));
+        }
 
         return "/clinica/lista";
     }
 
     @GetMapping(value = "/clinica/incluir")
-    public String telaCadastro(Model model) {
+    public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
 
-        model.addAttribute("responsaveis", responsavelService.obterResponsaveis());
+        if(usuario.getAdmin()){
+            model.addAttribute("responsaveis", responsavelService.obterResponsaveis());
+        } else{
+            model.addAttribute("responsaveis", responsavelService.obterResponsaveisPorUsuario(usuario.getId()));
+        }
+
         return "clinica/cadastro";
     }
 

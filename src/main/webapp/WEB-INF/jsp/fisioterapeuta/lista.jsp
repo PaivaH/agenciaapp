@@ -16,7 +16,8 @@
         <%@ include file="../components/nav.jsp" %>
         <div class="container">
             <h3>Classe: Fisioterapeuta</h3>
-            <button type="button" class="btn btn-primary"><a href="/fisioterapeuta/incluir" class="link-light">Adicionar</a></button>
+            <button type="button" class="btn btn-primary"><a href="/fisioterapeuta/incluir"
+                    class="link-light">Adicionar</a></button>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,20 +31,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tbody>
-                        <c:forEach var="i" items="${listagem}">
-                            <tr>
-                                <td>${i.id}</td>
-                                <td>${i.nome}</td>
-                                <td>${i.matricula}</td>
-                                <td>${i.especialidades}</td>
-                                <td>${i.atendeEmCasa}</td>
-                                <td>${i.getConselhoRegional()}</td>
-                                <td><a href="/fisioterapeuta/${i.id}/excluir">excluir</a></td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
+                    <c:forEach var="i" items="${listagem}">
+                        <tr>
+                            <td>${i.id}</td>
+                            <td>${i.nome}</td>
+                            <td>${i.matricula}</td>
+                            <td>${i.especialidades}</td>
+                            <td>${i.atendeEmCasa}</td>
+                            <td>${i.getConselhoRegional()}</td>
+                            <td><a href="/fisioterapeuta/${i.id}/excluir">excluir</a></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
+            </table>
+            <c:if test="${empty listagem}">
+                <p>listagem vazia!!</p>
+            </c:if>
         </div>
     </div>
 </body>

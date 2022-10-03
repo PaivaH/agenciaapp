@@ -27,7 +27,7 @@ public class Responsavel implements IPrinter {
     public Responsavel() {
     }
 
-    public Responsavel(String nome, String cargo, String email)
+    public Responsavel(String nome, String cargo, String email, Usuario usuario)
             throws nameNullException, nameEmptyException {
         if (nome == null) {
             throw new nameNullException("Nome não pode ser nulo!");
@@ -38,6 +38,7 @@ public class Responsavel implements IPrinter {
         this.nome = nome;
         this.cargo = cargo;
         this.email = email;
+        this.usuario = usuario;
     }
 
     public Integer getId() {

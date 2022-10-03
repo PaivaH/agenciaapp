@@ -15,8 +15,12 @@ public class ProfissionalService {
         profissionalRepository.save(profissional);
     }
 
-    public Iterable<Profissional> obterProfissionals() {
+    public Iterable<Profissional> obterProfissionais() {
         return profissionalRepository.findAll();
+    }
+
+    public Iterable<Profissional> obterProfissionaisPorUsuario(Integer id) {
+        return profissionalRepository.obterProfissionaisPorUsuario(id);
     }
 
     public void excluir(Integer id) {

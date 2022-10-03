@@ -19,6 +19,10 @@ public class PsicologoService {
         return psicologoRepository.findAll();
     }
 
+    public  Iterable<Psicologo> obterPsicologosPorUsuario(Integer id) {
+        return psicologoRepository.obterProfissionaisPorUsuario(id);
+    }
+
     public  void excluir(Integer id) {
         psicologoRepository.deleteById(id);
     }

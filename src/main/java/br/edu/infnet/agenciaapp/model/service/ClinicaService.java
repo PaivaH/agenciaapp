@@ -10,7 +10,7 @@ import br.edu.infnet.agenciaapp.model.repository.ClinicaRepository;
 public class ClinicaService {
     
     @Autowired
-    ClinicaRepository clinicaRepository;
+    private ClinicaRepository clinicaRepository;
 
     public void addClinica(Clinica clinica){
         clinicaRepository.save(clinica);
@@ -18,6 +18,14 @@ public class ClinicaService {
 
     public Iterable<Clinica> obterClinicas() {
         return clinicaRepository.findAll();
+    }
+
+    public Iterable<Clinica> obterClinicasPorUsuario(Integer id) {
+        return clinicaRepository.obterClinicasPorId(id);
+    }
+
+    public Clinica obterClinica(Integer id){
+        return clinicaRepository.findById(id).get();
     }
 
     public void excluir(Integer id) {

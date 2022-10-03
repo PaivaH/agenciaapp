@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
+import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.ClinicaService;
 import br.edu.infnet.agenciaapp.model.service.FisioterapeutaService;
 
@@ -20,15 +22,26 @@ public class FisioterapeutaController {
     private ClinicaService clinicaService;
 
     @GetMapping(value = "/fisioterapeuta/lista")
-    public String telaHome(Model model) {
+    public String telaHome(Model model, @SessionAttribute("user") Usuario usuario) {
         model.addAttribute("listagem", fisioterapeutaService.obterFisioterapeutas());
+
+        if(usuario.getAdmin()){
+            model.addAttribute("listagem", fisioterapeutaService.obterFisioterapeutas());
+        } else {
+            model.addAttribute("listagem", fisioterapeutaService.obterFisioterapeutasPorUsuario(usuario.getId()));
+        }
 
         return "/fisioterapeuta/lista";
     }
 
     @GetMapping(value = "/fisioterapeuta/incluir")
-    public String telaCadastro(Model model) {
-        model.addAttribute("clinicas", clinicaService.obterClinicas());
+    public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
+
+        if(usuario.getAdmin()){
+            model.addAttribute("clinicas", clinicaService.obterClinicas());
+        } else {
+            model.addAttribute("clinicas", clinicaService.obterClinicasPorUsuario(usuario.getId()));
+        }
 
         return "fisioterapeuta/cadastro";
     }

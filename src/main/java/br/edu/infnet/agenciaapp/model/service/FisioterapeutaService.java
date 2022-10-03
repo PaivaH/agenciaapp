@@ -19,6 +19,10 @@ public class FisioterapeutaService {
         return fisioterapeutaRepository.findAll();
     }
 
+    public Iterable<Fisioterapeuta> obterFisioterapeutasPorUsuario(Integer id) {
+        return fisioterapeutaRepository.obterProfissionaisPorUsuario(id);
+    }
+
     public void excluir(Integer id) {
         fisioterapeutaRepository.deleteById(id);
     }

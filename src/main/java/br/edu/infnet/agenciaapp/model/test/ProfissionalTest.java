@@ -3,7 +3,6 @@ package br.edu.infnet.agenciaapp.model.test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
 
 import br.edu.infnet.agenciaapp.AppPrinter;
 import br.edu.infnet.agenciaapp.model.domain.Fisioterapeuta;
@@ -12,7 +11,6 @@ import br.edu.infnet.agenciaapp.model.domain.Profissional;
 import br.edu.infnet.agenciaapp.model.domain.Psicologo;
 import br.edu.infnet.agenciaapp.model.service.ProfissionalService;
 
-@Component
 public class ProfissionalTest implements ApplicationRunner {
     @Autowired
     ProfissionalService profissionalService;

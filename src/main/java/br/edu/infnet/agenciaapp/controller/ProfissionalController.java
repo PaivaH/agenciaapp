@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.agenciaapp.model.domain.Usuario;
 import br.edu.infnet.agenciaapp.model.service.ProfissionalService;
 
 @Controller
@@ -14,8 +16,14 @@ public class ProfissionalController {
     private ProfissionalService profissionalService;
 
     @GetMapping(value = "/profissional/lista")
-    public String telaHome(Model model) {
-        model.addAttribute("listagem", profissionalService.obterProfissionals());
+    public String telaHome(Model model, @SessionAttribute("user") Usuario usuario) {
+
+        if(usuario.getAdmin()){
+            model.addAttribute("listagem", profissionalService.obterProfissionais());
+        } else {
+            model.addAttribute("listagem", profissionalService.obterProfissionaisPorUsuario(usuario.getId()));
+        }
+
         
         return "/profissional/lista";
     }

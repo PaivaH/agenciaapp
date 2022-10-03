@@ -29,14 +29,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="i" items="${listagem}">
+                    <c:if test="${not empty listagem}">
+                        <c:forEach var="i" items="${listagem}">
+                            <tr>
+                                <td>${i.nome}</td>
+                                <td>${i.email}</td>
+                                <td>${i.senha}</td>
+                                <td><a href="/usuario/${i.id}/excluir">excluir</a></td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${not empty usuarioLogado}">
                         <tr>
-                            <td>${i.nome}</td>
-                            <td>${i.email}</td>
-                            <td>${i.senha}</td>
-                            <td><a href="/usuario/${i.id}/excluir">excluir</a></td>
+                            <td>${usuarioLogado.nome}</td>
+                            <td>${usuarioLogado.email}</td>
+                            <td>${usuarioLogado.senha}</td>
+                            <td><a href="/usuario/${usuarioLogado.id}/excluir">excluir</a></td>
                         </tr>
-                    </c:forEach>
+                    </c:if>
                 </tbody>
             </table>
         </div>

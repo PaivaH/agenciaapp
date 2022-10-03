@@ -18,8 +18,13 @@ public class ResponsavelController {
     ResponsavelService responsavelService;
 
     @GetMapping(value = "/responsavel/lista")
-    public String telaHome(Model model) {
-        model.addAttribute("listagem", responsavelService.obterResponsaveis());
+    public String telaHome(Model model, @SessionAttribute("user") Usuario usuario) {
+
+        if(usuario.getAdmin()){
+            model.addAttribute("listagem", responsavelService.obterResponsaveis());
+        } else {
+            model.addAttribute("listagem", responsavelService.obterResponsaveisPorUsuario(usuario.getId()));
+        }
 
         return "/responsavel/lista";
     }
